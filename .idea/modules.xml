@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/aws-development-with-localstack.iml" filepath="$PROJECT_DIR$/.idea/aws-development-with-localstack.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../wa-ppe-api/.idea/wa-ppe-api.iml" filepath="$PROJECT_DIR$/../wa-ppe-api/.idea/wa-ppe-api.iml" />
+    </modules>
+  </component>
+</project>
