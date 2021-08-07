@@ -14,10 +14,6 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
  * `cdk diff`        compare deployed stack with current state
  * `cdk synth`       emits the synthesized CloudFormation template
 
-# deploy
-cdklocal deploy --profile localstack
-
-
 #init create a fake aws credentials - use for our localstack
 ```shell
 cat ~/.aws/credentials
@@ -48,8 +44,8 @@ cd to localstack folder and run the command `docker-compose up -d`
 ```
 
 #### We will try to run deploy with our profile
-cdklocal deploy --profile localstack
-
+`cdklocal deploy --profile localstack`
+```markdown
 IAM Statement Changes
 ┌───┬───────────────────────┬────────┬─────────────────┬───────────────────────────┬───────────────────────────────────────────────────────┐
 │   │ Resource              │ Effect │ Action          │ Principal                 │ Condition                                             │
@@ -71,11 +67,15 @@ ApplicationStack: creating CloudFormation changeset...
 ✅  ApplicationStack
 
 Stack ARN:
-arn:aws:cloudformation:us-east-1:000000000000:stack/ApplicationStack/e67d04e2
+    arn:aws:cloudformation:us-east-1:000000000000:stack/ApplicationStack/e67d04e2
+```
 
 #### Recheck again with our sns created
+```shell
 aws --endpoint-url=http://localhost:4566 sns list-topics
+```
 
+Output
 ```json
 {
     "Topics": [
@@ -86,7 +86,7 @@ aws --endpoint-url=http://localhost:4566 sns list-topics
 }
 ```
 
-#### Destroy our stack
+### Destroy our stack
 ```shell
 (base) haithai@FVFY201CHV2H infra % cdklocal destroy
 Are you sure you want to delete: ApplicationStack (y/n)? y
@@ -101,7 +101,4 @@ aws --endpoint-url=http://localhost:4566 sns list-topics
 }
 
 ```
-#### temp
-
----
 
