@@ -1,0 +1,141 @@
+{
+    "Table": {
+        "AttributeDefinitions": [
+            {
+                "AttributeName": "pk",
+                "AttributeType": "S"
+            },
+            {
+                "AttributeName": "sk",
+                "AttributeType": "S"
+            },
+            {
+                "AttributeName": "pk2",
+                "AttributeType": "S"
+            },
+            {
+                "AttributeName": "sk2",
+                "AttributeType": "S"
+            },
+            {
+                "AttributeName": "pk3",
+                "AttributeType": "S"
+            },
+            {
+                "AttributeName": "sk3",
+                "AttributeType": "S"
+            },
+            {
+                "AttributeName": "pk4",
+                "AttributeType": "S"
+            },
+            {
+                "AttributeName": "sk4",
+                "AttributeType": "S"
+            }
+        ],
+        "TableName": "test-development",
+        "KeySchema": [
+            {
+                "AttributeName": "pk",
+                "KeyType": "HASH"
+            },
+            {
+                "AttributeName": "sk",
+                "KeyType": "RANGE"
+            }
+        ],
+        "TableStatus": "ACTIVE",
+        "CreationDateTime": "2021-08-07T19:23:03.601000+07:00",
+        "ProvisionedThroughput": {
+            "LastIncreaseDateTime": "1970-01-01T07:00:00+07:00",
+            "LastDecreaseDateTime": "1970-01-01T07:00:00+07:00",
+            "NumberOfDecreasesToday": 0,
+            "ReadCapacityUnits": 5,
+            "WriteCapacityUnits": 5
+        },
+        "TableSizeBytes": 0,
+        "ItemCount": 0,
+        "TableArn": "arn:aws:dynamodb:us-east-1:000000000000:table/test-development",
+        "GlobalSecondaryIndexes": [
+            {
+                "IndexName": "pk3-sk3-index",
+                "KeySchema": [
+                    {
+                        "AttributeName": "pk3",
+                        "KeyType": "HASH"
+                    },
+                    {
+                        "AttributeName": "sk3",
+                        "KeyType": "RANGE"
+                    }
+                ],
+                "Projection": {
+                    "ProjectionType": "ALL"
+                },
+                "IndexStatus": "ACTIVE",
+                "ProvisionedThroughput": {
+                    "ReadCapacityUnits": 5,
+                    "WriteCapacityUnits": 5
+                },
+                "IndexSizeBytes": 0,
+                "ItemCount": 0,
+                "IndexArn": "arn:aws:dynamodb:ddblocal:000000000000:table/test-development/index/pk3-sk3-index"
+            },
+            {
+                "IndexName": "pk2-sk2-index",
+                "KeySchema": [
+                    {
+                        "AttributeName": "pk2",
+                        "KeyType": "HASH"
+                    },
+                    {
+                        "AttributeName": "sk2",
+                        "KeyType": "RANGE"
+                    }
+                ],
+                "Projection": {
+                    "ProjectionType": "ALL"
+                },
+                "IndexStatus": "ACTIVE",
+                "ProvisionedThroughput": {
+                    "ReadCapacityUnits": 5,
+                    "WriteCapacityUnits": 5
+                },
+                "IndexSizeBytes": 0,
+                "ItemCount": 0,
+                "IndexArn": "arn:aws:dynamodb:ddblocal:000000000000:table/test-development/index/pk2-sk2-index"
+            },
+            {
+                "IndexName": "pk4-sk4-index",
+                "KeySchema": [
+                    {
+                        "AttributeName": "pk4",
+                        "KeyType": "HASH"
+                    },
+                    {
+                        "AttributeName": "sk4",
+                        "KeyType": "RANGE"
+                    }
+                ],
+                "Projection": {
+                    "ProjectionType": "ALL"
+                },
+                "IndexStatus": "ACTIVE",
+                "ProvisionedThroughput": {
+                    "ReadCapacityUnits": 5,
+                    "WriteCapacityUnits": 5
+                },
+                "IndexSizeBytes": 0,
+                "ItemCount": 0,
+                "IndexArn": "arn:aws:dynamodb:ddblocal:000000000000:table/test-development/index/pk4-sk4-index"
+            }
+        ],
+        "StreamSpecification": {
+            "StreamEnabled": true,
+            "StreamViewType": "NEW_AND_OLD_IMAGES"
+        },
+        "LatestStreamLabel": "2021-08-07T12:23:03.601",
+        "LatestStreamArn": "arn:aws:dynamodb:us-east-1:000000000000:table/test-development/stream/2021-08-07T12:23:03.601"
+    }
+}
