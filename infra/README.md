@@ -71,7 +71,6 @@ Stack ARN:
 ```
 
 #### Recheck again with our sns created
-```shell
 aws --endpoint-url=http://localhost:4566 sns list-topics
 ```
 
