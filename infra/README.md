@@ -101,3 +101,16 @@ aws --endpoint-url=http://localhost:4566 sns list-topics
 
 ```
 
+### How to verify our Dynamo DB Table setup
+```shell
+
+aws --endpoint-url=http://localhost:4566 dynamodb list-tables
+
+{
+    "TableNames": [
+        "test-development"
+    ]
+}
+
+aws --endpoint-url=http://localhost:4566 dynamodb describe-table --table-name test-development > test-development.json
+```
