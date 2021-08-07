@@ -114,3 +114,19 @@ aws --endpoint-url=http://localhost:4566 dynamodb list-tables
 
 aws --endpoint-url=http://localhost:4566 dynamodb describe-table --table-name test-development > test-development.json
 ```
+
+
+### How to verify our S3 Bucket setup
+#### Test make sure can upload a file to your S3.
+
+```shell
+aws --endpoint-url=http://localhost:4566 s3 cp temp/text-test.txt s3://screen-shot
+```
+> upload: temp/text-test.txt to s3://screen-shot/text-test.txt  
+
+#### You can verify using the below command S3 bucket contains files
+```shell
+aws --endpoint-url=http://localhost:4566 s3 ls s3://screen-shot
+```
+> 2021-08-07 23:47:17          5 text-test.txt
+
