@@ -13,10 +13,11 @@ services:
       - "127.0.0.1:4571:4571"
       - "127.0.0.1:${PORT_WEB_UI-8080}:${PORT_WEB_UI-8080}"
     environment:
-      - SERVICES=s3,dynamodb,sns,sqs,firehose,kinesis,ses,sts,cloudformation
+      - SERVICES=s3,dynamodb,sns,sqs,firehose,kinesis,ses,sts,cloudformation,iam,lambda
       - DEBUG=1
       - DATA_DIR=/tmp/localstack/data
       - PORT_WEB_UI=8080
+      - DEFAULT_REGION=us-west-2
       - LAMBDA_EXECUTOR=local
       - KINESIS_ERROR_PROBABILITY=1.0
       - DOCKER_HOST=unix:///var/run/docker.sock

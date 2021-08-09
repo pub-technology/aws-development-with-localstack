@@ -1,6 +1,7 @@
 import * as cdk from "@aws-cdk/core";
 import { initDynamoDB } from "./dynamodb";
 import { initS3Buckets } from "./s3";
+import { initFirehose } from "./firehose";
 
 
 export class ApplicationStack extends cdk.Stack {
@@ -12,5 +13,8 @@ export class ApplicationStack extends cdk.Stack {
 
     // S3 Initialize
     initS3Buckets(this);
+
+    // Firehose Initialize
+    initFirehose(this);
   }
 }

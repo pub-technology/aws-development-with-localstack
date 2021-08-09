@@ -130,3 +130,62 @@ aws --endpoint-url=http://localhost:4566 s3 ls s3://screen-shot
 ```
 > 2021-08-07 23:47:17          5 text-test.txt
 
+### How to verify our Firehose  setup
+aws --endpoint-url=http://localhost:4566 firehose list-delivery-streams
+
+(base) haithai@FVFY201CHV2H iam % aws --endpoint-url=http://localhost:4566 iam create-role --role-name super-role --assume-role-policy-document file://$PWD/super-role.json
+{
+"Role": {
+"Path": "/",
+"RoleName": "super-role",
+"RoleId": "yjgfjgufwd7yi66ypql8",
+"Arn": "arn:aws:iam::000000000000:role/super-role",
+"CreateDate": "2021-08-08T16:41:15.560000+00:00",
+"AssumeRolePolicyDocument": {
+"Version": "2012-10-17",
+"Statement": [
+{
+"Sid": "Stmt1572416334166",
+"Action": "*",
+"Effect": "Allow",
+"Resource": "*"
+}
+]
+},
+"MaxSessionDuration": 3600
+}
+}
+
+
+
+```markdown
+IAM Statement Changes
+┌───┬────────────────────────────────────────────────────────────────┬────────┬───────────────────────────────────────┬───────────────────────────────────────────────────────────────────┬───────────┐
+│   │ Resource                                                       │ Effect │ Action                                │ Principal                                                         │ Condition │
+├───┼────────────────────────────────────────────────────────────────┼────────┼───────────────────────────────────────┼───────────────────────────────────────────────────────────────────┼───────────┤
+│ + │ ${Custom::S3AutoDeleteObjectsCustomResourceProvider/Role.Arn}  │ Allow  │ sts:AssumeRole                        │ Service:lambda.amazonaws.com                                      │           │
+├───┼────────────────────────────────────────────────────────────────┼────────┼───────────────────────────────────────┼───────────────────────────────────────────────────────────────────┼───────────┤
+│ + │ ${firehoseRole.Arn}                                            │ Allow  │ sts:AssumeRole                        │ Service:firehose.amazonaws.com                                    │           │
+├───┼────────────────────────────────────────────────────────────────┼────────┼───────────────────────────────────────┼───────────────────────────────────────────────────────────────────┼───────────┤
+│ + │ ${test-firehose-s3-bucket.Arn}                                 │ Allow  │ s3:DeleteObject*                      │ AWS:${Custom::S3AutoDeleteObjectsCustomResourceProvider/Role.Arn} │           │
+│   │ ${test-firehose-s3-bucket.Arn}/*                               │        │ s3:GetBucket*                         │                                                                   │           │
+│   │                                                                │        │ s3:List*                              │                                                                   │           │
+├───┼────────────────────────────────────────────────────────────────┼────────┼───────────────────────────────────────┼───────────────────────────────────────────────────────────────────┼───────────┤
+│ + │ ${test-firehose-s3-bucket.Arn}/*                               │ Allow  │ s3:GetObject                          │ AWS:*                                                             │           │
+└───┴────────────────────────────────────────────────────────────────┴────────┴───────────────────────────────────────┴───────────────────────────────────────────────────────────────────┴───────────┘
+IAM Policy Changes
+┌───┬───────────────────────────────────────────────────────────┬──────────────────────────────────────────────────────────────────────────────────────────────┐
+│   │ Resource                                                  │ Managed Policy ARN                                                                           │
+├───┼───────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────┤
+│ + │ ${Custom::S3AutoDeleteObjectsCustomResourceProvider/Role} │ {"Fn::Sub":"arn:${AWS::Partition}:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"} │
+└───┴───────────────────────────────────────────────────────────┴──────────────────────────────────────────────────────────────────────────────────────────────┘
+(NOTE: There may be security-related changes not in this list. See https://github.com/aws/aws-cdk/issues/1299)
+
+```
+
+aws --endpoint-url=http://localhost:4566 s3api get-bucket-policy --bucket test-firehose-s3
+
+
+aws --endpoint-url=http://localhost:4566 firehose list-delivery-streams
+
+aws --endpoint-url=http://localhost:4566 firehose describe-delivery-stream --delivery-stream-name test-firehose-delivery-stream3

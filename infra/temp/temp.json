@@ -1,0 +1,30 @@
+{
+  "DeliveryStreamDescription": {
+    "DeliveryStreamName": "test-firehose-delivery-stream3",
+    "DeliveryStreamARN": "arn:aws:firehose:us-west-2:000000000000:deliverystream/test-firehose-delivery-stream3",
+    "DeliveryStreamStatus": "ACTIVE",
+    "DeliveryStreamType": "DirectPut",
+    "VersionId": "1",
+    "CreateTimestamp": "2021-08-09T11:06:49.381495+07:00",
+    "Destinations": [
+      {
+        "DestinationId": "686ab370",
+        "S3DestinationDescription": {
+          "RoleARN": "arn:aws:iam::000000000000:role/cf-ApplicationStack-firehoseRoleE5891AF8",
+          "BucketARN": "arn:aws:s3:::test-firehose-s3",
+          "Prefix": "myFirehose/DeliveredYear=!{timestamp:yyyy}/anyMonth/rand=!{firehose:random-string}",
+          "ErrorOutputPrefix": "myFirehoseFailures/!{firehose:error-output-type}/!{timestamp:yyyy}/anyMonth/!{timestamp:dd}",
+          "BufferingHints": {
+            "SizeInMBs": 1,
+            "IntervalInSeconds": 60
+          },
+          "CompressionFormat": "UNCOMPRESSED",
+          "EncryptionConfiguration": {
+            "NoEncryptionConfig": "NoEncryption"
+          }
+        }
+      }
+    ],
+    "HasMoreDestinations": false
+  }
+}

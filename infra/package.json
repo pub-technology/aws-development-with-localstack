@@ -8,7 +8,10 @@
     "build": "tsc",
     "watch": "tsc -w",
     "test": "jest",
-    "cdk": "cdk"
+    "cdk": "cdklocal",
+    "deploy": "cdklocal deploy",
+    "bootstrap": "cdklocal bootstrap aws://unknown-account/us-west-2",
+    "destroy": "cdklocal destroy"
   },
   "devDependencies": {
     "aws-cdk": "1.117.0",
@@ -26,6 +29,10 @@
     "@aws-cdk/aws-sqs": "1.117.0",
     "@aws-cdk/core": "1.117.0",
     "@aws-cdk/aws-dynamodb": "1.117.0",
-    "@aws-cdk/aws-s3": "1.117.0"
+    "@aws-cdk/aws-s3": "1.117.0",
+    "@aws-cdk/aws-kinesisfirehose": "1.117.0",
+    "@aws-cdk/aws-kinesisfirehose-destinations": "1.117.0",
+    "@aws-cdk/aws-kinesis": "1.117.0",
+    "@aws-cdk/aws-iam": "1.117.0"
   }
 }
