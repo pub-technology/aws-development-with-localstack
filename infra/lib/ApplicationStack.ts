@@ -2,7 +2,7 @@ import * as cdk from "@aws-cdk/core";
 import { initDynamoDB } from "./dynamodb";
 import { initS3Buckets } from "./s3";
 import { initFirehose } from "./firehose";
-
+import { initSQS } from './sqs';
 
 export class ApplicationStack extends cdk.Stack {
   constructor(scope: cdk.App, id: string, props?: cdk.StackProps) {
@@ -16,5 +16,8 @@ export class ApplicationStack extends cdk.Stack {
 
     // Firehose Initialize
     initFirehose(this);
+
+    // SQS Initialize
+    initSQS(this);
   }
 }
