@@ -1,5 +1,14 @@
 # AWS CDK & Localstack (Local Development)
 
+<img width="620" alt="Screen Shot 2021-12-16 at 15 31 15" src="https://user-images.githubusercontent.com/78775708/146335923-e406a2e5-caab-4fc4-ae04-4c5f8b9978de.png">
+
+## A few benefits of this approach are
+- You can run the lambda function locally
+- Don’t impact your team by sharing the same env ( update on the same buckets, same records )
+- Debug & Speed up your working
+- Don’t need to worry about paying for AWS usage for stupid action 🥰
+
+
 The `cdk.json` file tells the CDK Toolkit how to execute your app.
 
 ## Useful commands
