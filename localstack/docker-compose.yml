@@ -1,6 +1,24 @@
 version: "3.8"
 
 services:
+  memcached:
+    container_name: aws_memcached
+    image: bitnami/memcached:latest
+    network_mode: bridge
+    ports:
+      - "11211:11211"
+    environment:
+      - MEMCACHED_CACHE_SIZE=128
+  redis:
+    container_name: aws_redis
+    image: bitnami/redis:latest
+    network_mode: bridge
+    ports:
+      - "6379:6379"
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    volumes:
+      - './.redis-persistence:/bitnami/redis/data'
   localstack:
     container_name: AWS-DEVELOPMENT-WITH-LOCALSTACK
     image: localstack/localstack:latest
