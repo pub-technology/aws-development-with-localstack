@@ -1,6 +1,6 @@
 # AWS CDK & Localstack (Local Development)
 
-<img width="620" alt="Screen Shot 2021-12-16 at 15 31 15" src="https://user-images.githubusercontent.com/78775708/146335923-e406a2e5-caab-4fc4-ae04-4c5f8b9978de.png">
+![123](https://user-images.githubusercontent.com/18282144/146704241-769f8c06-8981-411b-a055-3e3649bbc86f.png)
 
 ## A few benefits of this approach are
 - You can run the lambda function locally
@@ -79,6 +79,39 @@ output = json
   }, "features": {"persistence": "initialized", "initScripts": "initialized"}
 }
 ```
+
+#### Check your `memcached` was run successfully :check_mark: 
+
+```
+# telnet the to port 11211
+telnet localhost 11211
+
+# Add a new key to memcache
+set Customer_Id 0 900 5
+# Type your value ( Enter - A message STORED will be displayed)
+00-000-000
+STORED
+# Recheck by get your key stored 
+get Customer_Id
+00-000-000
+# exit telnet
+quit
+```
+
+#### Check your `Redis` was run successfully :check_mark: 
+Install Redis Client ( Add connection )
+
+#### Windows
+Download latest https://github.com/qishibo/AnotherRedisDesktopManager/releases package from https://github.com/qishibo/AnotherRedisDesktopManager/releases [or gitee in China], double click to install.
+
+Or by winget: winget install qishibo.AnotherRedisDesktopManager
+
+#### Mac
+Download latest https://github.com/qishibo/AnotherRedisDesktopManager/releases package from release [or gitee in China], double click to install.
+
+Or by brew: brew install --cask another-redis-desktop-manager
+
+ 
 
 ### Step 3. Deploy our Application Stack
 
