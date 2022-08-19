@@ -1,7 +1,7 @@
 import {Effect, Group, ManagedPolicy, PolicyStatement, User} from '@aws-cdk/aws-iam';
 import {Stack} from "@aws-cdk/core";
 
-export const generateSuperRole = (root: Stack) => {
+export const generateSuperRole = (root: Stack): User => {
     // 👇 Create group
     const group = new Group(root, 'admin-group', {
         managedPolicies: [
