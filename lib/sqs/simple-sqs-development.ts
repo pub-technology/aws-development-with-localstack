@@ -1,7 +1,7 @@
 import * as sqs from '@aws-cdk/aws-sqs';
 import {RemovalPolicy, Stack} from "@aws-cdk/core";
 
-export const generateSimpleSQS = (root: Stack) => {
+export const generateSimpleSQS = (root: Stack): sqs.Queue => {
 // 👇 create queue
     return new sqs.Queue(root, 'simple-sqs', {
         queueName: 'simple-sqs-development',

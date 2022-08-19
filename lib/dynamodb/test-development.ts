@@ -3,7 +3,7 @@ import {GlobalSecondaryIndexProps, StreamViewType} from "@aws-cdk/aws-dynamodb/l
 import {createStandardGSI} from "../../utils/createGlobalSecondaryIndex";
 import {Stack} from "@aws-cdk/core"
 
-export const generateTestDevelopmentTable = (root: Stack) => {
+export const generateTestDevelopmentTable = (root: Stack): dynamodb.Table => {
     const testDevelopmentTable = new dynamodb.Table(root, 'Table', {
         tableName: 'test-development',
         // partition key & sort key
